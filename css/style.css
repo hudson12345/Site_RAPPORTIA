@@ -1,0 +1,473 @@
+/* Aplica estilos globais a todos os elementos */
+* {
+  box-sizing: border-box; /* Garante que padding e bordas sejam incluídos na largura/altura total do elemento */
+  margin: 0; /* Remove margens padrão */
+  padding: 0; /* Remove preenchimento padrão */
+}
+
+/* Estilos para o elemento body */
+body {
+  font-family: Arial, sans-serif; /* Define Arial como fonte primária, com sans-serif como reserva */
+  background-color: #101932; /* Fundo azul escuro para toda a página */
+  color: white; /* Cor do texto branca para legibilidade no fundo escuro */
+}
+
+/* Estilização do cabeçalho para a barra de navegação superior */
+header {
+  display: flex; /* Usa flexbox para o layout */
+  justify-content: space-between; /* Distribui logo e navegação horizontalmente */
+  align-items: center; /* Centraliza conteúdo verticalmente */
+  background: #0C0C0C; /* Fundo quase preto para o cabeçalho */
+  padding: 1rem 2rem; /* Preenchimento: 1rem em cima/baixo, 2rem nos lados */
+}
+
+/* Estilização da imagem (logo) no cabeçalho */
+header img {
+  width: 180px; /* Largura fixa do logo */
+  height: auto; /* Altura ajustada proporcionalmente */
+  max-height: 80px; /* Limita a altura máxima do logo */
+}
+
+/* Estilização da lista de navegação */
+nav ul {
+  display: flex; /* Organiza itens da lista horizontalmente */
+  list-style: none; /* Remove marcadores padrão da lista */
+  gap: 2rem; /* Espaçamento de 2rem entre os itens da lista */
+}
+
+/* Estilização dos links de navegação */
+nav a {
+  text-decoration: none; /* Remove sublinhado padrão dos links */
+  color: aliceblue; /* Cor azul clara para os links */
+  font-weight: bold; /* Texto em negrito */
+  font-size: clamp(1rem, 3vw, 1.25rem); /* Tamanho de fonte responsivo: mínimo 1rem, preferencial 3vw, máximo 1.25rem */
+}
+
+/* Efeito hover para links de navegação */
+nav a:hover {
+  color: gray; /* Muda a cor para cinza ao passar o mouse */
+}
+
+/* Estilização do contêiner do carrossel */
+#carrossel {
+  width: 100%; /* Ocupa toda a largura disponível */
+  position: relative; /* Permite posicionamento absoluto dos filhos */
+  overflow: hidden; /* Esconde conteúdo que ultrapassa o contêiner */
+  aspect-ratio: 16 / 9; /* Mantém proporção 16:9 para o carrossel */
+  background: #000; /* Fundo preto para o carrossel */
+}
+
+/* Estilização das imagens do carrossel */
+#carrossel img {
+  width: 100%; /* Imagem ocupa toda a largura do contêiner */
+  height: 100%; /* Imagem ocupa toda a altura do contêiner */
+  object-fit: cover; /* Redimensiona imagem mantendo proporção, cobrindo o contêiner */
+  position: absolute; /* Posiciona imagens sobrepostas */
+  top: 0; /* Alinha ao topo */
+  left: 0; /* Alinha à esquerda */
+  opacity: 0; /* Imagens começam invisíveis */
+  transition: opacity 0.5s ease-in-out; /* Transição suave de opacidade em 0.5s */
+}
+
+/* Imagem ativa no carrossel */
+#carrossel img.ativo {
+  opacity: 1; /* Torna a imagem visível quando ativa */
+}
+
+/* Estilização dos controles do carrossel (indicadores de navegação) */
+.controles {
+  position: absolute; /* Posiciona controles sobre o carrossel */
+  bottom: 1rem; /* 1rem de distância do fundo */
+  left: 50%; /* Centraliza horizontalmente */
+  transform: translateX(-50%); /* Ajusta para centralizar perfeitamente */
+  display: flex; /* Organiza controles horizontalmente */
+  gap: 0.75rem; /* Espaçamento de 0.75rem entre controles */
+}
+
+/* Estilização de cada controle (bolinha) */
+.controle {
+  width: 0.75rem; /* Largura do controle */
+  height: 0.75rem; /* Altura do controle */
+  background: rgba(255, 255, 255, 0.5); /* Fundo branco semitransparente */
+  border-radius: 50%; /* Forma circular */
+  cursor: pointer; /* Cursor de clique */
+  transition: background 0.3s, transform 0.3s; /* Transições suaves para fundo e escala */
+}
+
+/* Controle ativo */
+.controle.ativo {
+  background: #fff; /* Fundo branco opaco para controle ativo */
+  transform: scale(1.2); /* Aumenta ligeiramente o tamanho */
+}
+
+/* Estilização dos botões de navegação do carrossel */
+.nav-btn {
+  position: absolute; /* Posiciona botões sobre o carrossel */
+  top: 50%; /* Centraliza verticalmente */
+  transform: translateY(-50%); /* Ajusta para centralizar perfeitamente */
+  background: rgba(0, 0, 0, 0.5); /* Fundo preto semitransparente */
+  color: white; /* Texto branco */
+  border: none; /* Sem borda */
+  padding: 0.75rem; /* Preenchimento interno */
+  cursor: pointer; /* Cursor de clique */
+  font-size: 1.5rem; /* Tamanho da fonte */
+  border-radius: 0.5rem; /* Bordas arredondadas */
+}
+
+/* Efeito hover para botões de navegação */
+.nav-btn:hover {
+  background: rgba(0, 0, 0, 0.8); /* Fundo mais escuro ao passar o mouse */
+}
+
+/* Posicionamento do botão "anterior" */
+.prev-btn {
+  left: 1rem; /* 1rem de distância da esquerda */
+}
+
+/* Posicionamento do botão "próximo" */
+.next-btn {
+  right: 1rem; /* 1rem de distância da direita */
+}
+
+/* Estilização da seção "Sobre" */
+#sobre {
+  display: flex; /* Usa flexbox para layout */
+  flex-wrap: wrap; /* Permite quebra de linha para itens */
+  align-items: center; /* Centraliza itens verticalmente */
+  padding: 2rem; /* Preenchimento interno */
+  gap: 1rem; /* Espaçamento entre elementos */
+}
+
+/* Estilização do texto da seção "Sobre" */
+#sobre-texto {
+  flex: 1; /* Ocupa espaço disponível igualmente */
+  min-width: 250px; /* Largura mínima para evitar colapso */
+  text-align: center; /* Centraliza texto */
+}
+
+/* Título da seção "Sobre" */
+#sobre-texto h1 {
+  font-size: clamp(2rem, 5vw, 3rem); /* Tamanho de fonte responsivo */
+  margin-bottom: 1rem; /* Margem inferior */
+}
+
+/* Parágrafo da seção "Sobre" */
+#sobre-texto p {
+  font-size: clamp(1rem, 2.5vw, 1.5rem); /* Tamanho de fonte responsivo */
+}
+
+/* Estilização da seção do mascote */
+#mascote {
+  flex: 1; /* Ocupa espaço disponível igualmente */
+  min-width: 250px; /* Largura mínima */
+  text-align: center; /* Centraliza conteúdo */
+}
+
+/* Imagem do mascote */
+#mascote img {
+  max-width: 100%; /* Limita largura máxima da imagem */
+  height: auto; /* Altura proporcional */
+}
+
+/* Estilização da seção inferior de "Sobre" */
+#sobre-inferior {
+  display: flex; /* Usa flexbox para layout */
+  flex-wrap: wrap; /* Permite quebra de linha */
+  gap: 1rem; /* Espaçamento entre elementos */
+  justify-content: space-between; /* Distribui itens horizontalmente */
+  margin-top: 2rem; /* Margem superior */
+}
+
+/* Estilização dos blocos da seção inferior */
+#sobre-inferior div {
+  flex: 1; /* Ocupa espaço disponível igualmente */
+  min-width: 200px; /* Largura mínima */
+  text-align: center; /* Centraliza texto */
+  padding: 1.5rem; /* Preenchimento interno */
+  background-color: #0f3460; /* Fundo azul escuro */
+  border-radius: 0.625rem; /* Bordas arredondadas */
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Transições suaves para escala e fundo */
+}
+
+/* Efeito hover para blocos da seção inferior */
+#sobre-inferior div:hover {
+  transform: scale(1.05); /* Aumenta ligeiramente o tamanho */
+  background-color: rgba(0, 0, 0, 0.2); /* Fundo mais claro ao passar o mouse */
+}
+
+/* Título dos blocos da seção inferior */
+#sobre-inferior h2 {
+  font-size: clamp(1.2rem, 3vw, 1.5rem); /* Tamanho de fonte responsivo */
+  position: relative; /* Permite posicionamento do pseudo-elemento */
+  margin-bottom: 1rem; /* Margem inferior */
+}
+
+/* Linha decorativa abaixo dos títulos */
+#sobre-inferior h2:after {
+  content: ""; /* Cria pseudo-elemento vazio */
+  position: absolute; /* Posiciona abaixo do título */
+  bottom: -0.5rem; /* 0.5rem abaixo do título */
+  left: 50%; /* Centraliza horizontalmente */
+  transform: translateX(-50%); /* Ajusta para centralizar */
+  width: 50%; /* Largura da linha */
+  height: 3px; /* Altura da linha */
+  background-color: #ffd700; /* Cor amarela */
+}
+
+/* Parágrafos da seção inferior */
+#sobre-inferior p {
+  font-size: clamp(0.9rem, 2vw, 1.1rem); /* Tamanho de fonte responsivo */
+}
+
+/* Estilização da seção "Equipe" */
+#equipe {
+  text-align: center; /* Centraliza texto */
+  padding: 2rem; /* Preenchimento interno */
+}
+
+/* Título da seção "Equipe" */
+#equipe h1 {
+  font-size: clamp(2rem, 5vw, 3rem); /* Tamanho de fonte responsivo */
+  margin-bottom: 2rem; /* Margem inferior */
+}
+
+/* Estilização do contêiner de membros da equipe */
+#membros {
+  display: flex; /* Usa flexbox para layout */
+  flex-wrap: wrap; /* Permite quebra de linha */
+  justify-content: center; /* Centraliza itens */
+  gap: 1rem; /* Espaçamento entre membros */
+  max-width: 1600px; /* Largura máxima do contêiner */
+  margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+/* Estilização de cada membro da equipe */
+.membro {
+  background-color: #2c4066; /* Fundo azul médio */
+  padding: 1rem; /* Preenchimento interno */
+  flex: 0 1 250px; /* Largura base de 250px, com crescimento fixo */
+  border-radius: 0.9375rem; /* Bordas arredondadas */
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Transições suaves */
+}
+
+/* Efeito hover para membros */
+.membro:hover {
+  transform: scale(1.03); /* Aumenta ligeiramente o tamanho */
+  background-color: rgba(0, 0, 0, 0.2); /* Fundo mais claro */
+}
+
+/* Imagem de cada membro */
+.membro img {
+  width: 100%; /* Ocupa toda a largura do contêiner */
+  height: auto; /* Altura proporcional */
+  border: 4px solid #f1c40f; /* Borda amarela */
+  border-radius: 0.625rem; /* Bordas arredondadas */
+}
+
+/* Título de cada membro */
+.membro h3 {
+  margin: 0.5rem 0; /* Margem vertical */
+  font-size: 1.2rem; /* Tamanho da fonte */
+}
+
+/* Lista de informações dos membros */
+.membro ul {
+  list-style: none; /* Remove marcadores padrão */
+  text-align: left; /* Alinha texto à esquerda */
+  font-size: 1rem; /* Tamanho da fonte */
+}
+
+/* Itens da lista de membros */
+.membro ul li {
+  margin: 0.25rem 0; /* Margem vertical entre itens */
+}
+
+/* Estilização da seção de trailer */
+.trailer-section {
+  background-color: #1a2a44; /* Fundo azul escuro */
+  text-align: center; /* Centraliza conteúdo */
+  padding: 2rem; /* Preenchimento interno */
+}
+
+/* Estilização do cartão de trailer */
+.trailer-card {
+  width: 100%; /* Ocupa toda a largura disponível */
+  max-width: 1259px; /* Largura máxima */
+  margin: 2rem auto; /* Centraliza com margem vertical */
+  background-color: #2a4066; /* Fundo azul médio */
+  border: 5px solid #ffd700; /* Borda amarela */
+  border-radius: 0.625rem; /* Bordas arredondadas */
+  padding: 1rem; /* Preenchimento interno */
+}
+
+/* Estilização do iframe do trailer */
+.trailer-card iframe {
+  width: 100%; /* Ocupa toda a largura do contêiner */
+  aspect-ratio: 16 / 9; /* Proporção 16:9 */
+}
+
+/* Estilização da seção "Contato" */
+#contato {
+  display: flex; /* Usa flexbox para layout */
+  flex-wrap: wrap; /* Permite quebra de linha */
+  justify-content: space-between; /* Distribui itens horizontalmente */
+  padding: 2rem; /* Preenchimento interno */
+  background-color: #1a2a44; /* Fundo azul escuro */
+  gap: 2rem; /* Espaçamento entre elementos */
+}
+
+/* Estilização das informações de contato */
+.contact-info {
+  flex: 1; /* Ocupa espaço disponível igualmente */
+  min-width: 250px; /* Largura mínima */
+  text-align: center; /* Centraliza texto */
+}
+
+/* Título da seção "Contato" */
+.contact-info h1 {
+  font-size: clamp(2rem, 5vw, 3rem); /* Tamanho de fonte responsivo */
+  margin-bottom: 2rem; /* Margem inferior */
+}
+
+/* Estilização dos blocos de informação de contato */
+.contact-info div {
+  display: flex; /* Usa flexbox para alinhar ícone e texto */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  margin: 1.5rem 0; /* Margem vertical */
+  font-size: clamp(1rem, 3vw, 1.5rem); /* Tamanho de fonte responsivo */
+}
+
+/* Ícones das informações de contato */
+.contact-info i {
+  margin-right: 1rem; /* Espaço à direita do ícone */
+  font-size: 1.5rem; /* Tamanho do ícone */
+  color: #4a6ea9; /* Cor azul clara */
+}
+
+/* Estilização do contêiner do formulário */
+.form-container {
+  flex: 1; /* Ocupa espaço disponível igualmente */
+  min-width: 250px; /* Largura mínima */
+  background-color: #2a4066; /* Fundo azul médio */
+  padding: 1.5rem; /* Preenchimento interno */
+  border-radius: 0.9375rem; /* Bordas arredondadas */
+}
+
+/* Estilização dos campos de entrada do formulário */
+.form input,
+.form textarea {
+  display: block; /* Cada campo ocupa uma linha */
+  width: 100%; /* Ocupa toda a largura do contêiner */
+  margin: 0.75rem 0; /* Margem vertical */
+  padding: 0.75rem; /* Preenchimento interno */
+  background: transparent; /* Fundo transparente */
+  border: 2px solid #d4a017; /* Borda amarela */
+  color: white; /* Texto branco */
+  font-size: 1rem; /* Tamanho da fonte */
+}
+
+/* Estilização específica do textarea */
+.form textarea {
+  resize: none; /* Impede redimensionamento pelo usuário */
+  height: 120px; /* Altura fixa */
+}
+
+/* Estilização do botão do formulário */
+.form button {
+  width: 100%; /* Ocupa toda a largura do contêiner */
+  padding: 0.75rem; /* Preenchimento interno */
+  background-color: #d4a017; /* Fundo amarelo */
+  border: none; /* Sem borda */
+  border-radius: 0.625rem; /* Bordas arredondadas */
+  color: white; /* Texto branco */
+  font-size: 1rem; /* Tamanho da fonte */
+  cursor: pointer; /* Cursor de clique */
+}
+
+/* Estilização do rodapé */
+footer {
+  background-color: #031446; /* Fundo azul muito escuro */
+  padding: 1rem 2rem; /* Preenchimento interno */
+  display: flex; /* Usa flexbox para layout */
+  justify-content: space-between; /* Distribui itens horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+}
+
+/* Texto do rodapé */
+footer span {
+  font-size: 0.9rem; /* Tamanho da fonte */
+}
+
+/* Links do rodapé */
+footer a {
+  color: white; /* Texto branco */
+  text-decoration: none; /* Remove sublinhado */
+  font-size: 1.5rem; /* Tamanho da fonte */
+}
+
+/* Comportamento de rolagem suave para toda a página */
+html {
+  scroll-behavior: smooth; /* Rolagem suave ao clicar em links âncora */
+}
+
+/* Media query para telas até 1024px */
+@media (max-width: 1024px) {
+  #carrossel {
+    aspect-ratio: 16 / 9; /* Mantém proporção 16:9 */
+  }
+}
+
+/* Media query para telas até 768px (tablets e celulares) */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column; /* Muda para layout vertical */
+    padding: 1rem; /* Reduz preenchimento */
+  }
+  header img {
+    margin-bottom: 1rem; /* Adiciona margem abaixo do logo */
+  }
+  nav ul {
+    flex-direction: column; /* Lista de navegação em coluna */
+    gap: 0.5rem; /* Reduz espaçamento entre itens */
+    text-align: center; /* Centraliza texto */
+  }
+  #carrossel {
+    aspect-ratio: 4 / 3; /* Proporção mais quadrada para telas menores */
+  }
+  .nav-btn {
+    padding: 0.5rem; /* Reduz preenchimento dos botões */
+    font-size: 1.25rem; /* Reduz tamanho da fonte */
+  }
+  .controle {
+    width: 0.625rem; /* Reduz tamanho dos controles */
+    height: 0.625rem;
+  }
+  #sobre,
+  #sobre-inferior {
+    flex-direction: column; /* Muda para layout vertical */
+  }
+  #mascote {
+    margin-top: 1rem; /* Adiciona margem acima do mascote */
+  }
+  #equipe h1 {
+    font-size: 2rem; /* Reduz tamanho do título */
+  }
+  .membro {
+    flex: 0 1 calc(50% - 1rem); /* Cada membro ocupa 50% da largura menos margem */
+  }
+}
+
+/* Media query para telas até 480px (celulares pequenos) */
+@media (max-width: 480px) {
+  #carrossel {
+    aspect-ratio: 4 / 3; /* Mantém proporção 4:3 */
+  }
+  .nav-btn {
+    padding: 0.375rem; /* Reduz ainda mais o preenchimento */
+    font-size: 1rem; /* Reduz tamanho da fonte */
+  }
+  .membro {
+    flex: 0 1 100%; /* Cada membro ocupa 100% da largura */
+  }
+}
